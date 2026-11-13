@@ -15,11 +15,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Preparar sitio
+      - name: Preparar sitio multipágina
         run: |
           mkdir -p site
-          cp index.html site/
+          unzip -o DC_MOTRIX_prototipo_web.zip -d extracted
+          find extracted -type f -maxdepth 3 -exec cp --parents {} site/ \;
+          if [ -f site/DC_MOTRIX/index.html ]; then
+            cp -a site/DC_MOTRIX/. site/
+            rm -rf site/DC_MOTRIX
+          fi
           touch site/.nojekyll
+          test -f site/index.html
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
