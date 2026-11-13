@@ -21,6 +21,9 @@ jobs:
           unzip -o DC_MOTRIX_prototipo_web.zip -d site
           cp -a site/dc_motrix_web/. site/
           rm -rf site/dc_motrix_web
+          cp index.html site/index.html
+          mkdir -p site/assets
+          cp -a assets/. site/assets/
           touch site/.nojekyll
           test -f site/index.html
       - uses: actions/configure-pages@v5
