@@ -22,6 +22,7 @@ jobs:
           cp -a site/dc_motrix_web/. site/
           rm -rf site/dc_motrix_web
           cp index.html site/index.html
+          cp admin.html site/admin.html
           mkdir -p site/assets
           cp -a assets/. site/assets/
           touch site/.nojekyll
