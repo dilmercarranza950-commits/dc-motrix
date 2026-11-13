@@ -18,12 +18,9 @@ jobs:
       - name: Preparar sitio multipágina
         run: |
           mkdir -p site
-          unzip -o DC_MOTRIX_prototipo_web.zip -d extracted
-          find extracted -type f -maxdepth 3 -exec cp --parents {} site/ \;
-          if [ -f site/DC_MOTRIX/index.html ]; then
-            cp -a site/DC_MOTRIX/. site/
-            rm -rf site/DC_MOTRIX
-          fi
+          unzip -o DC_MOTRIX_prototipo_web.zip -d site
+          cp -a site/dc_motrix_web/. site/
+          rm -rf site/dc_motrix_web
           touch site/.nojekyll
           test -f site/index.html
       - uses: actions/configure-pages@v5
